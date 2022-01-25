@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  database_vagalume:
+    image: postgres
+    container_name: database_vagalume
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: database_vagalume
+    volumes:
+      - pgdata:/data/postgres
+  app:
+    build: .
+    container_name: api-vagalume
+    restart: always
+    ports:
+      - 3003:3003
+    volumes:
+      - .:/usr/app
+    links:
+      - database_vagalume
+    depends_on:
+      - database_vagalume
+volumes:
+  pgdata:
+    driver: local
