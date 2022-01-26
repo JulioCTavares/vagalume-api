@@ -24,7 +24,7 @@ export class CreateManager1643147709762 implements MigrationInterface {
           {
             name: "email",
             type: "varchar(125)",
-            isNullable: false,
+            isUnique: false,
           },
           {
             name: "password",

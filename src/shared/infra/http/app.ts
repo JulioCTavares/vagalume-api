@@ -1,9 +1,11 @@
 import "reflect-metadata";
 import "dotenv";
 import cors from "cors";
-import express, { json, Request, Response, NextFunction } from "express";
+import express, { json } from "express";
 import routes from "./routes";
-import "@shared/infra/typeorm";
+import createConnection from "@shared/infra/typeorm";
+
+createConnection();
 
 export const app = express();
 
