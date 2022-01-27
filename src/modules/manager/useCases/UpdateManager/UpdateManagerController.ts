@@ -8,7 +8,7 @@ class UpdateManagerController {
   async handle(req: Request, res: Response): Promise<Response> {
     const managerId = req.params.id;
 
-    const { name, cpf, email, old_password, password } = req.body;
+    const { name, cpf, email, password } = req.body;
 
     const updateManager = container.resolve(UpdateManagerUseCase);
 
@@ -17,7 +17,6 @@ class UpdateManagerController {
       name,
       cpf,
       email,
-      old_password,
       password,
     });
 

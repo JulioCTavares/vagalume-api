@@ -9,7 +9,6 @@ interface IRequest {
   name: string;
   cpf: string;
   email: string;
-  old_password?: string;
   password?: string;
 }
 
@@ -25,7 +24,6 @@ class UpdateManagerUseCases {
     name,
     cpf,
     email,
-    old_password,
     password,
   }: IRequest): Promise<Manager> {
     const manager = await this.managerRepository.findById(managerId);
@@ -38,18 +36,6 @@ class UpdateManagerUseCases {
 
     if (managerUpdateEmail && managerUpdateEmail.id !== managerId) {
       throw new ErrorsApp("Email already in use", 401);
-    }
-
-    if (password && !old_password) {
-      throw new ErrorsApp("Old password is needed to update the password", 401);
-    }
-
-    if (password && old_password) {
-      const checkOldPassword = await compare(old_password, manager.password);
-
-      if (!checkOldPassword) {
-        throw new ErrorsApp("Old password is incorrect", 401);
-      }
     }
 
     const hashPassword = await hash(password, 8);

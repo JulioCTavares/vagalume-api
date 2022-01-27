@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import IManagerRepository from "@modules/manager/repositories/IManagerRepository";
+import ErrorsApp from "@shared/errors/ErrorsApp";
 
 interface IRequest {
   managerId: string;
@@ -17,7 +18,7 @@ class DeleteManagerUseCase {
     const manager = await this.managerRepository.findById(managerId);
 
     if (!manager) {
-      throw new Error("Manager not found");
+      throw new ErrorsApp("Manager not found", 404);
     }
 
     await this.managerRepository.delete(manager);

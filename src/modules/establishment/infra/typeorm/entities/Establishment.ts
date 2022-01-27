@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-enum Categories {
+export enum Categories {
   HOTEL = "hotel",
   COLLEGE = "college",
   MALL = "mall",
