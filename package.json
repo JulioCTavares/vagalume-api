@@ -14,9 +14,11 @@
     "date-fns": "^2.28.0",
     "dotenv": "^14.3.1",
     "express": "^4.17.2",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.4.1",
     "tsyringe": "^4.6.0",
     "typeorm": "^0.2.41",
     "uuid": "^8.3.2"

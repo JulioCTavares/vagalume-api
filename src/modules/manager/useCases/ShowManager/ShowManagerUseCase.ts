@@ -2,6 +2,8 @@ import IManagerRepository from "@modules/manager/repositories/IManagerRepository
 import Manager from "@modules/manager/infra/typeorm/entities/Manager";
 import { injectable, inject } from "tsyringe";
 
+import ErrorsApp from "@shared/errors/ErrorsApp";
+
 interface IRequest {
   managerId: string;
 }
@@ -17,7 +19,7 @@ class ShowManagerUseCase {
     const manager = await this.managerRepository.findById(managerId);
 
     if (!manager) {
-      throw new Error("Could not find manager");
+      throw new ErrorsApp("Could not find manager", 404);
     }
 
     return manager;

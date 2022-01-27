@@ -1,9 +1,10 @@
 import ICreateManagerDTO from "@modules/manager/dtos/ICreateManagerDTO";
 import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
-import { v4 as uuid } from "uuid";
 import Manager from "@modules/manager/infra/typeorm/entities/Manager";
 import IManagerRepository from "@modules/manager/repositories/IManagerRepository";
+
+import ErrorsApp from "@shared/errors/ErrorsApp";
 
 @injectable()
 class CreateManagerUseCase {
@@ -19,13 +20,13 @@ class CreateManagerUseCase {
     password,
   }: ICreateManagerDTO): Promise<Manager> {
     if (!email) {
-      throw new Error("Email Incorrect");
+      throw new ErrorsApp("Email Incorrect", 401);
     }
 
     const checkUsetExist = await this.managerRepository.findByEmail(email);
 
     if (checkUsetExist) {
-      throw new Error("Email already exists");
+      throw new ErrorsApp("Email already exists", 401);
     }
 
     const passwordHashed = await hash(password, 8);

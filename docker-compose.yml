@@ -18,7 +18,7 @@ services:
     container_name: api-vagalume
     restart: always
     ports:
-      - 3003:3003
+      - 3333:3333
     volumes:
       - .:/usr/app
     links:
