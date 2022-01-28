@@ -13,7 +13,7 @@ export class CreateCam1643219952435 implements MigrationInterface {
           },
           {
             name: "ip",
-            type: "inet",
+            type: "varchar(255)",
             isNullable: false,
           },
           {
@@ -27,13 +27,13 @@ export class CreateCam1643219952435 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: "instalation",
+            name: "installation",
             type: "timestamp with time zone",
             isNullable: false,
           },
           {
-            name: "contagem",
-            type: "text[]",
+            name: "countdown",
+            type: "text",
             isNullable: false,
           },
           {

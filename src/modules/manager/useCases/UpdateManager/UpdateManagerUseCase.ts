@@ -1,7 +1,7 @@
 import Manager from "@modules/manager/infra/typeorm/entities/Manager";
 import IManagerRepository from "@modules/manager/repositories/IManagerRepository";
 import { inject, injectable } from "tsyringe";
-import { compare, hash } from "bcryptjs";
+import { hash } from "bcryptjs";
 import ErrorsApp from "@shared/errors/ErrorsApp";
 
 interface IRequest {
