@@ -5,6 +5,7 @@ import ListAllManagerController from "@modules/manager/useCases/ListAllManager/L
 import DeleteManagerController from "@modules/manager/useCases/DeleteManager/DeleteManagerController";
 import ShowManagerController from "@modules/manager/useCases/ShowManager/ShowManagerController";
 import UpdateManagerController from "@modules/manager/useCases/UpdateManager/UpdateManagerController";
+import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 
 const createManagerController = new CreateManagerController();
 const listAllManagerController = new ListAllManagerController();
@@ -15,6 +16,8 @@ const deleteManagerController = new DeleteManagerController();
 const managerRouter = Router();
 
 managerRouter.post("/", createManagerController.handle);
+
+managerRouter.use(ensureAuthenticated);
 managerRouter.get("/", listAllManagerController.handle);
 managerRouter.get("/:id", showAllManagerController.handle);
 managerRouter.put("/:id", updateManagerController.handle);

@@ -5,6 +5,7 @@ import ListEstablishmentController from "@modules/establishment/useCases/ListEst
 import ShowEstablishmentController from "@modules/establishment/useCases/ShowEsblishment/ShowEsblishmentController";
 import UpdateEstablishmentController from "@modules/establishment/useCases/UpdateEstablishment/UpdateEstablishmentController";
 import DeleteEstablishmentController from "@modules/establishment/useCases/DeleteEstablishment/DeleteEstablishmentController";
+import ensureAuthenticated from "@modules/manager/infra/http/middlewares/ensureAuthenticated";
 
 const createEstablishmentController = new CreateEstablishmentController();
 const listEstablishmentController = new ListEstablishmentController();
@@ -14,6 +15,7 @@ const deleteEstablishmentController = new DeleteEstablishmentController();
 
 const establishmentRouter = Router();
 
+establishmentRouter.use(ensureAuthenticated);
 establishmentRouter.post("/", createEstablishmentController.handle);
 establishmentRouter.get("/", listEstablishmentController.handle);
 establishmentRouter.get(":/id", showEstablishmentController.handle);
