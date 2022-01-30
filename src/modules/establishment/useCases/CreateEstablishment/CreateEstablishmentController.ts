@@ -16,9 +16,7 @@ class CreateEstablishmentController {
       category,
     });
 
-    return res
-      .status(204)
-      .json({ success: true, establishment: classToClass(establishment) });
+    return res.json({ success: true, establishment: classToClass(establishment) });
   }
 }
 

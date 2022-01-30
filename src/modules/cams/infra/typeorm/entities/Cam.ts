@@ -1,9 +1,12 @@
+import Establishment from "@modules/establishment/infra/typeorm/entities/Establishment";
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
@@ -15,6 +18,13 @@ class Cam {
   @Column()
   ip: string;
 
+  @ManyToOne(() => Establishment, (establishment) => establishment, {
+    onDelete: "RESTRICT",
+    onUpdate: "RESTRICT",
+  })
+  @JoinColumn({ name: "establishment_id", referencedColumnName: "id" })
+  establishment: Establishment;
+
   @Column()
   user: string;
 
@@ -25,7 +35,7 @@ class Cam {
   installation: Date;
 
   @Column()
-  counters: string[];
+  countdown: string;
 
   @CreateDateColumn()
   created_at: Date;

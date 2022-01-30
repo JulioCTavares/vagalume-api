@@ -12,6 +12,11 @@ export class CreateEstablishment1643211652245 implements MigrationInterface {
             isPrimary: true,
           },
           {
+            name: "manager_id",
+            type: "uuid",
+            isNullable: false,
+          },
+          {
             name: "name",
             type: "varchar(255)",
             isNullable: false,
@@ -37,6 +42,16 @@ export class CreateEstablishment1643211652245 implements MigrationInterface {
             name: "updated_at",
             type: "timestamp with time zone",
             default: "now()",
+          },
+        ],
+        foreignKeys: [
+          {
+            name: "FKEstablishmentManager",
+            referencedTableName: "manager",
+            referencedColumnNames: ["id"],
+            columnNames: ["manager_id"],
+            onDelete: "RESTRICT",
+            onUpdate: "RESTRICT",
           },
         ],
       })

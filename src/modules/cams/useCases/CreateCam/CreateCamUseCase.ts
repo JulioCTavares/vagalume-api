@@ -10,8 +10,10 @@ class CreateCamUseCase {
     private camRepository: ICamRepository
   ) {}
 
-  public async execute(data: ICreateCamDTO): Promise<Cam> {
-    const cam = await this.camRepository.create(data);
+  public async execute({ip, user, model ,countdown}: ICreateCamDTO): Promise<Cam> {
+    const cam = await this.camRepository.create({ip, user, model ,installation: new Date() ,countdown});
+
+    
 
     return cam;
   }

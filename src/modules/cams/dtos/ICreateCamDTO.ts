@@ -3,5 +3,5 @@ export default interface ICreateCamDTO {
   user: string;
   model: string;
   installation: Date;
-  countdown: [date: Date, countdown: string];
+  countdown: {date: Date, count: string};
 }

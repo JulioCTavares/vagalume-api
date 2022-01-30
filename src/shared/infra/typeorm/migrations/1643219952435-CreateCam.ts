@@ -17,6 +17,11 @@ export class CreateCam1643219952435 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: "establishment_id",
+            type: "uuid",
+            isNullable: false,
+          },
+          {
             name: "user",
             type: "varchar(255)",
             isNullable: false,
@@ -45,6 +50,16 @@ export class CreateCam1643219952435 implements MigrationInterface {
             name: "updated_at",
             type: "timestamp with time zone",
             default: "now()",
+          },
+        ],
+        foreignKeys: [
+          {
+            name: "FKCamEstablishment",
+            referencedTableName: "establishment",
+            referencedColumnNames: ["id"],
+            columnNames: ["establishment_id"],
+            onDelete: "RESTRICT",
+            onUpdate: "RESTRICT",
           },
         ],
       })
