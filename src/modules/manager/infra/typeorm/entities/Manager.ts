@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import {
   Entity,
   Column,
@@ -22,6 +23,7 @@ class Manager {
   cpf: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @CreateDateColumn()
